@@ -1,0 +1,43 @@
+﻿@model GuestBook.Models.User
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Register";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="container">
+    <div class="" style="margin:100px auto;width:50%;">
+        <h2  style="margin-left:50%;">Register</h2><br />
+        <form asp-action="Register" method="post">
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Confirm_Password" class="control-label"></label>
+                <input asp-for="Confirm_Password" class="form-control" />
+                <span asp-validation-for="Confirm_Password" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group" style="margin-left:50%;">
+                <input type="submit" value="Register" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial"></partial>
