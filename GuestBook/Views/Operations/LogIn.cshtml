@@ -177,8 +177,8 @@ hr {
 
 a {
   text-align: center;
-  display: block;
-  top: 120px;
+ /* display: block;
+  top: 120px;*/
   position: relative;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.2);
@@ -188,10 +188,8 @@ a {
 </head>
 <body>
 
-<div class="login">
-  <h2 class="active"> sign in </h2>
-
-  <h2 class="nonactive"> sign up </h2>
+<div class="login mt-5">
+  <h2 class="active d-inline"> sign in </h2>
   <form method="post" asp-action="LogIn">
   <div class="text-danger">@ViewBag.wrong</div>
   <br />
@@ -210,6 +208,8 @@ a {
     </button>
     <hr>
   </form>
+Dont have an account<a class="m-0" asp-action="register" asp-controller="Users">Sign Up</a>?
+
 
 </div>
 </body>
