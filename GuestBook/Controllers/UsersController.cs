@@ -30,7 +30,7 @@ namespace GuestBook.Controllers
             {
                 db.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Messages");
             }
             return View(user);
         }
