@@ -191,7 +191,9 @@ a {
   <h2 class="active"> sign in </h2>
 
   <h2 class="nonactive"> sign up </h2>
-  <form>
+  <form method="post">
+  <div class="text-primary">@ViewBag.wrong</div>
+  <br />
     <input asp-for="UserEmail" type="text" class="text">
      <span>Email</span>
     <br>
@@ -199,7 +201,7 @@ a {
     <input asp-for="Password" type="password" class="text">
     <span>password</span>
     <br>
-    <input name="remember" type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
+    <input name="remember" type="checkbox" id="" class="custom-checkbox" />
     <label for="checkbox-1-1">Keep me Signed in</label>
     
     <button class="signin">

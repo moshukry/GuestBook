@@ -39,8 +39,8 @@ namespace GuestBook.Controllers
             else
             {
                 ViewBag.wrong = "Wrond Email or Password!!";
+                return View("Login");
             }
-            return RedirectToAction("LogIn");
         }
     }
 }
