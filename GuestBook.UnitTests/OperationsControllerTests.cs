@@ -2,7 +2,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GuestBook.Controllers;
 using GuestBook.Models;
 using Microsoft.AspNetCore.Mvc;
-using Windows.Web.Http;
 
 namespace GuestBook.UnitTests
 {
@@ -10,14 +9,14 @@ namespace GuestBook.UnitTests
     public class OperationsControllerTests
     {
         private OperationsController OperationsController = new OperationsController(new GuestBookContext());
-        [TestMethod]
-        public void LogIn_LoggedHasCookies_RedirectToMessages()
-        {
-            //Act
-            ViewResult result = OperationsController.LogIn() as ViewResult;
-            //Assert
-            Assert.AreEqual("LogIn",result.ViewName);
-        }
+        //[TestMethod]
+        //public void LogIn_LoggedHasCookies_RedirectToMessages()
+        //{
+        //    //Act
+        //    ViewResult result = OperationsController.LogIn() as ViewResult;
+        //    //Assert
+        //    Assert.AreEqual("LogIn",result.ViewName);
+        //}
         [TestMethod]
         public void LogInPost_Wrongdata_Redirect()
         {
