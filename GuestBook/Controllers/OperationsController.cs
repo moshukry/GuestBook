@@ -20,12 +20,12 @@ namespace GuestBook.Controllers
                 ViewBag.looged = "";
                 return RedirectToAction("Index", "Messages");
             }
-            return View();
+            return View("LogIn");
         }
         [HttpPost]
         public IActionResult LogIn(User user,bool remember)
         {
-            User u = db.Users.Where(n=>n.UserEmail == user.UserEmail && n.Password == user.Password).FirstOrDefault();
+            User? u = db.Users.Where(n=>n.UserEmail == user.UserEmail && n.Password == user.Password).FirstOrDefault();
             if (u != null)
             {
                 if (remember)
@@ -41,7 +41,7 @@ namespace GuestBook.Controllers
             else
             {
                 ViewBag.wrong = "Wrond Email or Password!!";
-                return View("Login");
+                return View("LogIn");
             }
         }
         public IActionResult LogOut()
