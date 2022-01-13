@@ -103,14 +103,14 @@ namespace GuestBook.Controllers
             {
                 return NotFound();
             }
-
             var message = db.Messages.Include(m => m.User).FirstOrDefault(m => m.MessageId == id);
             if (message == null)
             {
                 return NotFound();
             }
-
-            return View(message);
+            db.Messages.Remove(message);
+            db.SaveChanges();
+            return RedirectToAction("Index","Messages");
         }
     }
 }

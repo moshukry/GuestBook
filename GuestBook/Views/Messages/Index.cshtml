@@ -4,12 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 style="margin-left:60%;transform:translate(-50%);" class="text-primary">My Messages</h1>
+<div class="container">
+<h1 style="margin-left:50%;transform:translate(-50%);" class="text-primary">My Messages</h1>
 
 <p>
     <a class="btn btn-primary" asp-action="Create">Add a Message</a>
 </p>
-<div class="container">
+<br />
     @foreach (var item in Model)
     {
         <div class="row">
@@ -19,7 +20,7 @@
             <div>
                 <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MessageId">Edit</a>
                 <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.MessageId">Details</a>
-                <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this message??')" >Delete</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MessageId" onclick="return confirm('Are you sure to delete this message??')" >Delete</a>
             </div>
         </div>
         <hr />
