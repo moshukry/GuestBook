@@ -1,0 +1,27 @@
+﻿@model IEnumerable<GuestBook.Models.Message>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="margin-left:60%;transform:translate(-50%);" class="text-primary">My Messages</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add a Message</a>
+</p>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <h3>From @item.User.UserName</h3>
+            <p class="mx-3">@item.MessageBody</p>
+            <p>@item.MessageTime</p>
+            <div>
+                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MessageId">Edit</a>
+                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.MessageId">Details</a>
+                <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this message??')" >Delete</a>
+            </div>
+        </div>
+        <hr />
+    }
+</div>
