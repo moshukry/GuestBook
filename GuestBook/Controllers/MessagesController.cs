@@ -22,7 +22,7 @@ namespace GuestBook.Controllers
         public IActionResult Index()
         {
             int user_id = int.Parse(HttpContext.Session.GetString("userId"));
-            var guestBookContext = db.Messages.Where(m => m.UserId == user_id);
+            var guestBookContext = db.Messages.Include(n=>n.User).Where(m => m.UserId == user_id);
             return View(guestBookContext.ToList());
         }
         public IActionResult Details(int? id)
