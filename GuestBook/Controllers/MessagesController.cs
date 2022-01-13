@@ -14,7 +14,6 @@ namespace GuestBook.Controllers
     {
         private readonly GuestBookContext db;
         //private int user_id;
-
         public MessagesController(GuestBookContext db)
         {
             this.db = db;
@@ -69,7 +68,6 @@ namespace GuestBook.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(db.Users, "UserId", "Password", message.UserId);
             return View(message);
         }
         [HttpPost]
@@ -94,7 +92,6 @@ namespace GuestBook.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["UserId"] = new SelectList(db.Users, "UserId", "Password", message.UserId);
             return View(message);
         }
         public IActionResult Delete(int? id)

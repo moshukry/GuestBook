@@ -1,0 +1,26 @@
+﻿@model GuestBook.Models.Message
+
+@{
+    ViewData["Title"] = "Edit Message";
+}
+
+<h2>Edit this message</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="MessageId" />
+            <input type="hidden" asp-for="UserId" />
+            <div class="form-group">
+                <h4>Message</h4>
+                <span asp-validation-for="MessageBody" class="text-danger"></span>
+                <input asp-for="MessageBody" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                 <a class="btn btn-outline-danger" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
