@@ -200,10 +200,10 @@ a {
     <input asp-for="Password" type="password" class="text">
     <span>password</span>
     <br>
-    <input name="remember" type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
-    <label for="checkbox-1-1">Keep me Signed in</label>
+    <input name="remember" type="checkbox" data-val="true" value="true" id="remember" class="custom-checkbox" />
+    <label for="remember">Keep me Signed in</label>
     
-    <button class="signin">
+    <button class="signin" type="submit">
       Sign In
     </button>
     <hr>
