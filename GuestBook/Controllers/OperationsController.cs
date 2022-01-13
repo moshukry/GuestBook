@@ -16,8 +16,8 @@ namespace GuestBook.Controllers
             string id = Request.Cookies["userId"];
             if (id != null)
             {
-                HttpContext.Session.SetString("UserId", id);
-                return RedirectToAction("Index", "Home");
+                HttpContext.Session.SetString("userId", id);
+                return RedirectToAction("Index", "Messages");
             }
             return View();
         }
@@ -33,8 +33,8 @@ namespace GuestBook.Controllers
                     opt.Expires = DateTime.Now.AddDays(10);
                     Response.Cookies.Append("id", u.UserId.ToString(), opt);
                 }
-                HttpContext.Session.SetString("UserId", u.UserId.ToString());
-                return RedirectToAction("Index","Home");
+                HttpContext.Session.SetString("userId", u.UserId.ToString());
+                return RedirectToAction("Index", "Messages");
             }
             else
             {

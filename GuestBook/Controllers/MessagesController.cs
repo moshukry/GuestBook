@@ -13,15 +13,15 @@ namespace GuestBook.Controllers
     public class MessagesController : Controller
     {
         private readonly GuestBookContext db;
-        private int user_id;
+        //private int user_id;
 
         public MessagesController(GuestBookContext db)
         {
             this.db = db;
-            user_id = int.Parse(HttpContext.Session.GetString("userId"));
         }
         public IActionResult Index()
         {
+            int user_id = int.Parse(HttpContext.Session.GetString("userId"));
             var guestBookContext = db.Messages.Where(m => m.UserId == user_id);
             return View(guestBookContext.ToList());
         }
@@ -42,7 +42,6 @@ namespace GuestBook.Controllers
         }
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(db.Users, "UserId", "Password");
             return View();
         }
         [HttpPost]
@@ -51,6 +50,7 @@ namespace GuestBook.Controllers
         {
             if (ModelState.IsValid)
             {
+                message.UserId = int.Parse(HttpContext.Session.GetString("userId"));
                 db.Add(message);
                 db.SaveChanges();
                 return RedirectToAction(nameof(Index));
