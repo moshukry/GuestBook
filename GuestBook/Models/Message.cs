@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuestBook.Models
 {
@@ -11,6 +12,7 @@ namespace GuestBook.Models
         }
 
         public int MessageId { get; set; }
+        [Required(ErrorMessage ="*")]
         public string? MessageBody { get; set; }
         public DateTime MessageTime { get; set; }
         public int? UserId { get; set; }

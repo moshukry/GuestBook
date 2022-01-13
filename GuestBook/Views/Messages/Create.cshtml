@@ -1,0 +1,25 @@
+﻿@model GuestBook.Models.Message
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Send a Message</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <h4>Write a message</h4>
+                <span asp-validation-for="MessageBody" class="text-danger"></span>
+                <input asp-for="MessageBody" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial"></partial>
