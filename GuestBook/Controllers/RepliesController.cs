@@ -29,44 +29,12 @@ namespace GuestBook.Controllers
         {
             if (ModelState.IsValid)
             {
+                reply.ReplyTime =DateTime.Now;
                 db.Add(reply);
                 db.SaveChanges();
                 return RedirectToAction("Index","Messages");
             }
             return View(reply);
-        }
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reply = await db.Replies
-                .Include(r => r.Message)
-                .FirstOrDefaultAsync(m => m.ReplyId == id);
-            if (reply == null)
-            {
-                return NotFound();
-            }
-
-            return View(reply);
-        }
-
-        // POST: Replies/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reply = await db.Replies.FindAsync(id);
-            db.Replies.Remove(reply);
-            await db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ReplyExists(int id)
-        {
-            return db.Replies.Any(e => e.ReplyId == id);
         }
     }
 }

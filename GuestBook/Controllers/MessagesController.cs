@@ -65,7 +65,7 @@ namespace GuestBook.Controllers
             if (ModelState.IsValid)
             {
                 message.UserId = int.Parse(Encryptor.DecryptData(code,"enc123"));
-                //message.MessageTime = DateTime.Now;
+                message.MessageTime = DateTime.Now;
                 db.Add(message);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,6 +101,7 @@ namespace GuestBook.Controllers
             {
                 try
                 {
+                    message.MessageTime = DateTime.Now;
                     db.Update(message);
                     db.SaveChanges();
                 }
