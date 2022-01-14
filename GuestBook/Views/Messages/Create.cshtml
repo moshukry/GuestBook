@@ -10,6 +10,11 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div class="form-group">
+                <h4>Your Friend's Code:</h4>
+                <p>@ViewBag.requiredcode</p>
+                <input name="code" class="form-control" />
+            </div>
+            <div class="form-group">
                 <h4>Write a message</h4>
                 <span asp-validation-for="MessageBody" class="text-danger"></span>
                 <input asp-for="MessageBody" class="form-control" />

@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuestBook.Models;
+using GuestBook.Encryptions;
 
 namespace GuestBook.Controllers
 {
@@ -25,8 +25,10 @@ namespace GuestBook.Controllers
             {
                 return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = 401 });
             }
-            int user_id = int.Parse(HttpContext.Session.GetString("userId"));
+            string user_ID = HttpContext.Session.GetString("userId");
+            int user_id = int.Parse(user_ID);
             var guestBookContext = db.Messages.Include(n=>n.User).Where(m => m.UserId == user_id);
+            ViewBag.code = Encryptor.EncryptData(user_ID, "enc123");
             return View(guestBookContext.ToList());
         }
         public IActionResult Details(int? id)
@@ -52,12 +54,18 @@ namespace GuestBook.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Message message)
+        public IActionResult Create(Message message,string code)
         {
             if (HttpContext.Session.GetString("userId") == null) { return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = 401 }); }
+            if(code == null)
+            {
+                ViewBag.requiredcode = "*";
+                return View(message);
+            }
             if (ModelState.IsValid)
             {
-                message.UserId = int.Parse(HttpContext.Session.GetString("userId"));
+                message.UserId = int.Parse(Encryptor.DecryptData(code,"enc123"));
+                //message.MessageTime = DateTime.Now;
                 db.Add(message);
                 db.SaveChanges();
                 return RedirectToAction("Index");
