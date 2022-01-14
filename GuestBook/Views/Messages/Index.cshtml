@@ -14,7 +14,8 @@
     @foreach (var item in Model)
     {
         <div class="row">
-            <h3>From @item.User.UserName</h3>
+@*            <h3>From @item.User.UserName</h3>
+*@          <h4>For You</h4>  
             <p class="mx-3">@item.MessageBody</p>
             <p>@item.MessageTime</p>
             <div class="d-flex justify-content-between">

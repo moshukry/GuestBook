@@ -19,6 +19,7 @@ namespace GuestBook.Controllers
         }
         public IActionResult Create(int id)
         {
+            if (HttpContext.Session.GetString("userId") == null) { return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = 401 }); }
             Reply reply = new Reply();
             reply.MessageId = id;
             return View(reply);
