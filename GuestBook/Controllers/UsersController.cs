@@ -30,6 +30,8 @@ namespace GuestBook.Controllers
             {
                 db.Add(user);
                 db.SaveChanges();
+                int id = db.Users.Where(n => n.UserEmail == user.UserEmail).FirstOrDefault().UserId;
+                HttpContext.Session.SetString("userId", id.ToString());
                 return RedirectToAction("Index","Messages");
             }
             return View(user);
