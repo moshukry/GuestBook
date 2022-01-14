@@ -65,8 +65,7 @@ namespace GuestBook.Models
 
                 entity.Property(e => e.ReplyTime)
                     .HasColumnType("datetime")
-                    .HasColumnName("reply_time")
-                    .HasComputedColumnSql("(getdate())", false);
+                    .HasColumnName("reply_time");
 
                 entity.HasOne(d => d.Message)
                     .WithMany(p => p.Replies)
