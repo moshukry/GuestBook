@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,23 +17,22 @@ namespace GuestBook.Controllers
         {
             db = context;
         }
-        public IActionResult Create(int message_id)
+        public IActionResult Create(int id)
         {
             Reply reply = new Reply();
-            reply.MessageId = message_id;
+            reply.MessageId = id;
             return View(reply);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(int message_id,Reply reply)
+        public IActionResult Create(Reply reply)
         {
             if (ModelState.IsValid)
             {
                 db.Add(reply);
                 db.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Messages");
             }
-            ViewData["MessageId"] = new SelectList(db.Messages, "MessageId", "MessageBody", reply.MessageId);
             return View(reply);
         }
         public async Task<IActionResult> Delete(int? id)
