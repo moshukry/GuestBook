@@ -17,10 +17,15 @@
             <h3>From @item.User.UserName</h3>
             <p class="mx-3">@item.MessageBody</p>
             <p>@item.MessageTime</p>
-            <div>
-                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MessageId">Edit</a>
-                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.MessageId">Details</a>
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MessageId" onclick="return confirm('Are you sure to delete this message??')" >Delete</a>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.MessageId">Edit</a>
+                    <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.MessageId">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MessageId" onclick="return confirm('Are you sure to delete this message??')" >Delete</a>
+                </div>
+                <div>
+                    <a class="btn btn-outline-primary" asp-controller="Replies" asp-action="Create" asp-route-id="@item.MessageId">Reply</a>
+                </div>
             </div>
         </div>
         <hr />
