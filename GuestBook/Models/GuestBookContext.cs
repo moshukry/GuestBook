@@ -40,8 +40,7 @@ namespace GuestBook.Models
 
                 entity.Property(e => e.MessageTime)
                     .HasColumnType("datetime")
-                    .HasColumnName("message_time")
-                    .HasComputedColumnSql("(getdate())", false);
+                    .HasColumnName("message_time");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
