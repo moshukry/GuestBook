@@ -48,6 +48,7 @@ A virtual guestbook is a guestbook specifically for an online wedding celebratio
 <p align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Router-MVC-DB.svg" width="500">
  </p>
+ 
 # How to Use
 
 ### a. To receive messages:
@@ -74,8 +75,8 @@ A virtual guestbook is a guestbook specifically for an online wedding celebratio
 - Add more unit test classes.
 - Use Microsoft Identity Authentication.
 
+<hr />
+
 ## Design Decisions
 - Used ASP.Net Core [.NET 6] because it's fast and reliable.
 - Used MVC Architechure pattern because it provieds more organization to the program and faster development proccess.
-
-
