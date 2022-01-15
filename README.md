@@ -48,7 +48,8 @@ A virtual guestbook is a guestbook specifically for an online wedding celebratio
 <p align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Router-MVC-DB.svg" width="500">
  </p>
-#  How to Use
+# How to Use
+
 ### a. To receive messages:
 - At home page you will find a code.
 - Copy this code and send it to a friend.
@@ -63,6 +64,12 @@ A virtual guestbook is a guestbook specifically for an online wedding celebratio
 - Under Each message you will find a (reply) button.
 - Click reply you will redirected to another page to write your reply.
 
+## 4. Future Work
+ - Enable the user to create different events.
+ - Allow the user to add images for the event.
+ - Market for the app through social media networks.
+<hr />
+
 ## Code Improvements To-Do List.
 - Add more unit test classes.
 - Use Microsoft Identity Authentication.
@@ -72,7 +79,3 @@ A virtual guestbook is a guestbook specifically for an online wedding celebratio
 - Used MVC Architechure pattern because it provieds more organization to the program and faster development proccess.
 
 
-## 7. Future Work
- - Enable the user to create different events.
- - Allow the user to add images for the event.
- - Market for the app through social media networks.
